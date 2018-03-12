@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<package name="com" extends="struts-default,json-default" namespace="/">
+		<action name="menu" class="menuAction" method="showMenu">
+			<result name="success">/menu.jsp</result>
+		</action>
+		<action name="exitem" class="exitemAction" method="exItem">
+			<result name="success">/menu.jsp</result>
+		</action>
+		<action name="login" class="loginAction" method="login">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>    <!-- 暂定 -->
+		</action>
+		<action name="logout" class="logoutAction" method="logout">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="enroll" class="enrollAction" method="enroll">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>      <!-- 暂定 -->
+		</action>
+		<action name="modifyUserInfo" class="modifyUserInfoAction" method="modifyUserInfo">
+			<result name="success">/personal.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<action name="editAddr" class="editAddrAction" method="deleteAddr">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<action name="showAddr" class="showAddrAction" method="showAddr">
+			<result name="success" type="json">
+				<param name="root">addressList</param>
+			</result>
+		</action>
+		<action name="addAddr" class="addAddrAction" method="addAddrInfo">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	<package name="cart" extends="struts-default" namespace="">
+		<action name="PayCart" class="PayCartAction" method="payCart">
+			<result name="success">/pay.jsp</result>
+		</action>
+		<action name="DeleteOrder" class="DeleteCartAction" method="deleteOrder">
+			<result name="success">/menu.jsp</result>
+		</action>
+		<action name="ChangeAddr" class="ChangeAddrAction" method="changeAddr">
+			<result name="success">/menu.jsp</result>
+		</action>
+		<action name="AddCart" class="AddCartAction" method="addOrder">
+			<result name="success">/menu.jsp</result>
+		</action>
+	</package>
+	<package name="order" extends="struts-default" namespace="">
+		<action name="ShowOrder" class="ShowOrderAction" method="showOrder">
+			<result name="success">/orders.jsp</result>
+		</action>
+	</package>
+</struts>    
